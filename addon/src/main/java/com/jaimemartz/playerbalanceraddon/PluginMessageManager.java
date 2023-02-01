@@ -157,6 +157,26 @@ public class PluginMessageManager implements PluginMessageListener {
         return true;
     }
 
+    public boolean getSectionPlayerCountTag(String section, Consumer<String> consumer) {
+        Player player = Iterables.getFirst(plugin.getServer().getOnlinePlayers(), null);
+        if (player == null) {
+            return false;
+        }
+
+        ByteArrayDataOutput out = ByteStreams.newDataOutput();
+        out.writeUTF("GetSectionPlayerCountTag");
+        out.writeUTF(section);
+
+        contexts.put(new MessageContext(
+                PB_CHANNEL,
+                "GetSectionPlayerCountTag",
+                player.getUniqueId()
+        ), (response) -> consumer.accept(response.readUTF()));
+
+        player.sendPluginMessage(plugin, PB_CHANNEL, out.toByteArray());
+        return true;
+    }
+
     public void clearPlayerBypass(Player player) {
         ByteArrayDataOutput out = ByteStreams.newDataOutput();
         out.writeUTF("ClearPlayerBypass");

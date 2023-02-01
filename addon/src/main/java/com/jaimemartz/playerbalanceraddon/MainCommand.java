@@ -27,20 +27,20 @@ public class MainCommand implements CommandExecutor {
                                 Player player = plugin.getServer().getPlayer(args[2]);
                                 if (player != null) {
                                     plugin.getManager().connectPlayer(player, input);
-                                    sender.sendMessage(Color.translate(plugin.getConfig().getString("RequestSent")));
+                                    sender.sendMessage(Color.translate("&a成发送请求!"));
                                 } else {
-                                    sender.sendMessage(Color.translate(plugin.getConfig().getString("NoPlayer")));
+                                    sender.sendMessage(Color.translate("&c玩家不存在!"));
                                 }
                             } else {
                                 if (sender instanceof Player) {
                                     plugin.getManager().connectPlayer((Player) sender, input);
-                                    sender.sendMessage(Color.translate(plugin.getConfig().getString("RequestSent")));
+                                    sender.sendMessage(Color.translate("&a成发送请求!"));
                                 } else {
-                                    sender.sendMessage(Color.translate(plugin.getConfig().getString("ConsoleError")));
+                                    sender.sendMessage(Color.translate("&c只有玩家才能执行这条指令!"));
                                 }
                             }
                         } else {
-                            sender.sendMessage(ChatColor.RED + "Usage: /section connect <section> [player]");
+                            sender.sendMessage(ChatColor.RED + "用法: /spb connect <组> [玩家]");
                         }
                         break;
                     }
@@ -50,16 +50,16 @@ public class MainCommand implements CommandExecutor {
                             Player player = plugin.getServer().getPlayer(args[1]);
                             if (player != null) {
                                 plugin.getManager().fallbackPlayer((Player) sender);
-                                sender.sendMessage(Color.translate(plugin.getConfig().getString("RequestSent")));
+                                sender.sendMessage(Color.translate("&a成发送请求!"));
                             } else {
-                                sender.sendMessage(Color.translate(plugin.getConfig().getString("NoPlayer")));
+                                sender.sendMessage(Color.translate("&c玩家不存在!"));
                             }
                         } else {
                             if (sender instanceof Player) {
                                 plugin.getManager().fallbackPlayer((Player) sender);
-                                sender.sendMessage(Color.translate(plugin.getConfig().getString("RequestSent")));
+                                sender.sendMessage(Color.translate("&a成发送请求!"));
                             } else {
-                                sender.sendMessage(Color.translate(plugin.getConfig().getString("ConsoleError")));
+                                sender.sendMessage(Color.translate("&c只有玩家才能执行这条指令!"));
                             }
                         }
                         break;
@@ -72,20 +72,20 @@ public class MainCommand implements CommandExecutor {
                                 Player player = plugin.getServer().getPlayer(args[2]);
                                 if (player != null) {
                                     plugin.getManager().bypassConnect(player, input);
-                                    sender.sendMessage(Color.translate(plugin.getConfig().getString("RequestSent")));
+                                    sender.sendMessage(Color.translate("&a成发送请求!"));
                                 } else {
-                                    sender.sendMessage(Color.translate(plugin.getConfig().getString("NoPlayer")));
+                                    sender.sendMessage(Color.translate("&c玩家不存在!"));
                                 }
                             } else {
                                 if (sender instanceof Player) {
                                     plugin.getManager().bypassConnect((Player) sender, input);
-                                    sender.sendMessage(Color.translate(plugin.getConfig().getString("RequestSent")));
+                                    sender.sendMessage(Color.translate("&a成发送请求!"));
                                 } else {
-                                    sender.sendMessage(Color.translate(plugin.getConfig().getString("ConsoleError")));
+                                    sender.sendMessage(Color.translate("&c只有玩家才能执行这条指令!"));
                                 }
                             }
                         } else {
-                            sender.sendMessage(ChatColor.RED + "Usage: /section bypassconnect <server> [player]");
+                            sender.sendMessage(ChatColor.RED + "用法: /spb bypassconnect <服务器> [玩家]");
                         }
                         break;
                     }
@@ -95,16 +95,16 @@ public class MainCommand implements CommandExecutor {
                             Player player = plugin.getServer().getPlayer(args[1]);
                             if (player != null) {
                                 plugin.getManager().setPlayerBypass(player);
-                                sender.sendMessage(Color.translate(plugin.getConfig().getString("RequestSent")));
+                                sender.sendMessage(Color.translate("&a成发送请求!"));
                             } else {
-                                sender.sendMessage(Color.translate(plugin.getConfig().getString("NoPlayer")));
+                                sender.sendMessage(Color.translate("&c玩家不存在!"));
                             }
                         } else {
                             if (sender instanceof Player) {
                                 plugin.getManager().setPlayerBypass((Player) sender);
-                                sender.sendMessage(Color.translate(plugin.getConfig().getString("RequestSent")));
+                                sender.sendMessage(Color.translate("&a成发送请求!"));
                             } else {
-                                sender.sendMessage(Color.translate(plugin.getConfig().getString("ConsoleError")));
+                                sender.sendMessage(Color.translate("&c只有玩家才能执行这条指令!"));
                             }
                         }
                         break;
@@ -115,16 +115,16 @@ public class MainCommand implements CommandExecutor {
                             Player player = plugin.getServer().getPlayer(args[1]);
                             if (player != null) {
                                 plugin.getManager().clearPlayerBypass((Player) sender);
-                                sender.sendMessage(Color.translate(plugin.getConfig().getString("RequestSent")));
+                                sender.sendMessage(Color.translate("&a成发送请求!"));
                             } else {
-                                sender.sendMessage(Color.translate(plugin.getConfig().getString("NoPlayer")));
+                                sender.sendMessage(Color.translate("&c玩家不存在!"));
                             }
                         } else {
                             if (sender instanceof Player) {
                                 plugin.getManager().clearPlayerBypass((Player) sender);
-                                sender.sendMessage(Color.translate(plugin.getConfig().getString("RequestSent")));
+                                sender.sendMessage(Color.translate("&a成发送请求!"));
                             } else {
-                                sender.sendMessage(Color.translate(plugin.getConfig().getString("ConsoleError")));
+                                sender.sendMessage(Color.translate("&c只有玩家才能执行这条指令!"));
                             }
                         }
                         break;
@@ -133,13 +133,13 @@ public class MainCommand implements CommandExecutor {
                     case "overridestatus": {
                         if (args.length >= 3) {
                             if (args[2].equals("false") || args[2].equals("true")) {
-                                plugin.getManager().setStatusOverride(args[1], Boolean.valueOf(args[2]));
-                                sender.sendMessage(Color.translate(plugin.getConfig().getString("RequestSent")));
+                                plugin.getManager().setStatusOverride(args[1], Boolean.parseBoolean(args[2]));
+                                sender.sendMessage(Color.translate("&a成发送请求!"));
                             } else {
-                                sender.sendMessage(Color.translate(plugin.getConfig().getString("BooleanError")));
+                                sender.sendMessage(Color.translate("&c状态必须为 true 或 false !"));
                             }
                         } else {
-                            sender.sendMessage(ChatColor.RED + "Usage: /section overridestatus <section> <status: false|true>");
+                            sender.sendMessage(ChatColor.RED + "用法: /spb overridestatus <服务器> <状态: false|true>");
                         }
                         break;
                     }
@@ -147,24 +147,25 @@ public class MainCommand implements CommandExecutor {
                     case "clearoverride": {
                         if (args.length >= 2) {
                             plugin.getManager().clearStatusOverride(args[1]);
-                            sender.sendMessage(Color.translate(plugin.getConfig().getString("RequestSent")));
+                            sender.sendMessage(Color.translate("&a成发送请求!"));
                         } else {
-                            sender.sendMessage(ChatColor.RED + "Usage: /section clearoverride <server>");
+                            sender.sendMessage(ChatColor.RED + "用法: /spb clearoverride <服务器>");
                         }
                         break;
                     }
                 }
             } else {
                 sender.sendMessage(ChatColor.STRIKETHROUGH + ChatColor.GRAY.toString() + Strings.repeat("-", 53));
-                sender.sendMessage(ChatColor.GRAY + "Available commands:");
-                sender.sendMessage(ChatColor.AQUA + "/spb connect <section> [player]" + ChatColor.GRAY + " - " + ChatColor.RED + "Connects you or the specified player to that section");
-                sender.sendMessage(ChatColor.AQUA + "/spb fallback [player]" + ChatColor.GRAY + " - " + ChatColor.RED + "Connects you or the specified player to the parent of the current section");
-                sender.sendMessage(ChatColor.AQUA + "/spb bypassconnect <server> [player]" + ChatColor.GRAY + " - " + ChatColor.RED + "Connects you or the specified player to a specific server without balancing");
-                sender.sendMessage(ChatColor.AQUA + "/spb setbypass [player]" + ChatColor.GRAY + " - " + ChatColor.RED + "Sets a bypass for you or the specified player");
-                sender.sendMessage(ChatColor.AQUA + "/spb clearbypass [player]" + ChatColor.GRAY + " - " + ChatColor.RED + "Clears the bypass for you or the specified player");
-                sender.sendMessage(ChatColor.AQUA + "/spb overridestatus <server> <status: false|true>" + ChatColor.GRAY + " - " + ChatColor.RED + "Overrides the accessible status of a specific server, over anything else");
-                sender.sendMessage(ChatColor.AQUA + "/spb clearoverride <server>" + ChatColor.GRAY + " - " + ChatColor.RED + "Clears the overridden status of a specific server");
+                sender.sendMessage(ChatColor.GRAY + "可用指令:");
+                sender.sendMessage(ChatColor.AQUA + "/spb connect <组> [玩家]" + ChatColor.GRAY + " - " + ChatColor.RED + "将自己或者其他玩家连接到某个组里");
+                sender.sendMessage(ChatColor.AQUA + "/spb fallback [玩家]" + ChatColor.GRAY + " - " + ChatColor.RED + "将自己或者其他玩家连接到当前组的父级组里");
+                sender.sendMessage(ChatColor.AQUA + "/spb bypassconnect <服务器> [玩家]" + ChatColor.GRAY + " - " + ChatColor.RED + "将自己或者指定玩家连接到特定服务器并且忽略人数平衡");
+                sender.sendMessage(ChatColor.AQUA + "/spb setbypass [玩家]" + ChatColor.GRAY + " - " + ChatColor.RED + "设置自己或者指定玩家拥有忽略的特权");
+                sender.sendMessage(ChatColor.AQUA + "/spb clearbypass [玩家]" + ChatColor.GRAY + " - " + ChatColor.RED + "移除自己或者指定玩家拥有忽略的特权");
+                sender.sendMessage(ChatColor.AQUA + "/spb overridestatus <服务器> <状态: false|true>" + ChatColor.GRAY + " - " + ChatColor.RED + "更改指定服务器的可访问状态");
+                sender.sendMessage(ChatColor.AQUA + "/spb clearoverride <服务器>" + ChatColor.GRAY + " - " + ChatColor.RED + "清除指定服务器的状态模式");
                 sender.sendMessage(ChatColor.STRIKETHROUGH + ChatColor.GRAY.toString() + Strings.repeat("-", 53));
+
             }
         }
         return false;

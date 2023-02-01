@@ -22,10 +22,6 @@
                 <configuration>
                     <relocations>
                         <relocation>
-                            <pattern>org.bstats</pattern>
-                            <shadedPattern>com.jaimemartz.playerbalancer.metrics</shadedPattern>
-                        </relocation>
-                        <relocation>
                             <pattern>ninja.leaping.configurate</pattern>
                             <shadedPattern>com.jaimemartz.playerbalancer.libs.ninja.leaping.configurate</shadedPattern>
                         </relocation>
@@ -84,12 +80,6 @@
                     <artifactId>guava</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.bstats</groupId>
-            <artifactId>bstats-bungeecord</artifactId>
-            <version>1.7</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

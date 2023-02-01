@@ -174,6 +174,30 @@ public class PluginMessageListener implements Listener {
                     break;
                 }
 
+                case "GetSectionPlayerCountTag": {
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    DataOutputStream out = new DataOutputStream(stream);
+
+                    ServerSection section = plugin.getSectionManager().getByName(in.readUTF());
+
+                    if (section == null)
+                        break;
+
+                    try {
+                        out.writeUTF("GetSectionPlayerCountTag");
+                        out.writeUTF(section.getName() + ","
+                                + section.getServers().stream().reduce(
+                                        0,
+                                (integer, serverInfo) -> integer + plugin.getNetworkManager().getPlayers(serverInfo),
+                                Integer::sum));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    sender.sendData(PB_CHANNEL, stream.toByteArray());
+                    break;
+                }
+
                 case "GetServerStatus": {
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     DataOutputStream out = new DataOutputStream(stream);
